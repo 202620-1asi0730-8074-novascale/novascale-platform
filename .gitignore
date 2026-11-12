@@ -1,0 +1,12 @@
+**/bin/
+**/obj/
+**/.idea/
+**/.vs/
+*.user
+*.suo
+*.log
+.env
+.env.local
+*.sln
+*.slnx
+*.http
