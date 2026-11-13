@@ -1,0 +1,237 @@
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <data name="InvalidData" xml:space="preserve">
+    <value>La información proporcionada no es válida.</value>
+  </data>
+  <data name="InvalidState" xml:space="preserve">
+    <value>El estado seleccionado no es válido.</value>
+  </data>
+  <data name="InvalidAmount" xml:space="preserve">
+    <value>Indica un monto válido con hasta dos decimales.</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>No se encontró el registro solicitado.</value>
+  </data>
+  <data name="Forbidden" xml:space="preserve">
+    <value>No tienes permiso para realizar esta acción.</value>
+  </data>
+  <data name="Unauthorized" xml:space="preserve">
+    <value>Inicia sesión para continuar.</value>
+  </data>
+  <data name="InvalidCredentials" xml:space="preserve">
+    <value>El correo o la contraseña son incorrectos.</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>La contraseña debe contener entre 8 y 128 caracteres.</value>
+  </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Ya existe un registro con esos datos únicos.</value>
+  </data>
+  <data name="InvalidReference" xml:space="preserve">
+    <value>Uno de los registros relacionados no es válido o no está disponible.</value>
+  </data>
+  <data name="InUse" xml:space="preserve">
+    <value>El registro está en uso y no se puede eliminar o reemplazar.</value>
+  </data>
+  <data name="LastOwner" xml:space="preserve">
+    <value>La empresa debe conservar al menos un administrador activo.</value>
+  </data>
+  <data name="CancelSaleFirst" xml:space="preserve">
+    <value>Cancela la venta antes de eliminarla.</value>
+  </data>
+  <data name="ConversationClosed" xml:space="preserve">
+    <value>Abre la conversación antes de enviar un mensaje.</value>
+  </data>
+  <data name="ExternalMessageReadOnly" xml:space="preserve">
+    <value>Los mensajes externos no se pueden modificar aquí.</value>
+  </data>
+  <data name="InvalidAttachment" xml:space="preserve">
+    <value>Adjunta hasta tres archivos permitidos de un máximo de 2 MB cada uno.</value>
+  </data>
+  <data name="UnexpectedError" xml:space="preserve">
+    <value>No se pudo completar la solicitud. Inténtalo de nuevo.</value>
+  </data>
+  <data name="TooManyRequests" xml:space="preserve">
+    <value>Demasiados intentos. Vuelve a intentarlo más tarde.</value>
+  </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>Este campo es obligatorio.</value>
+  </data>
+  <data name="PositiveId" xml:space="preserve">
+    <value>Ingresa un identificador entero mayor que cero.</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Ingresa un correo electrónico válido.</value>
+  </data>
+  <data name="LengthLimit" xml:space="preserve">
+    <value>Ingresa como máximo {1} caracteres.</value>
+  </data>
+  <data name="InvalidValue" xml:space="preserve">
+    <value>El valor ingresado no es válido para este campo.</value>
+  </data>
+  <data name="InvalidDate" xml:space="preserve">
+    <value>Ingresa una fecha válida con formato AAAA-MM-DD.</value>
+  </data>
+  <data name="InvalidJson" xml:space="preserve">
+    <value>El cuerpo de la solicitud no es válido o contiene valores con un tipo incorrecto.</value>
+  </data>
+  <data name="BodyRequired" xml:space="preserve">
+    <value>El cuerpo de la solicitud es obligatorio.</value>
+  </data>
+  <data name="MethodNotAllowed" xml:space="preserve">
+    <value>Este método HTTP no está permitido para este recurso.</value>
+  </data>
+  <data name="UnsupportedMediaType" xml:space="preserve">
+    <value>Envía el cuerpo de la solicitud en formato JSON.</value>
+  </data>
+  <data name="RequestTooLarge" xml:space="preserve">
+    <value>La solicitud supera el tamaño permitido.</value>
+  </data>
+  <data name="ApiTitle" xml:space="preserve">
+    <value>API de NovaLeads</value>
+  </data>
+  <data name="ApiDescription" xml:space="preserve">
+    <value>Servicios CRM para empresas, usuarios, contactos, conversaciones y ventas. Selecciona el idioma de las validaciones con la cabecera Accept-Language: en o es.</value>
+  </data>
+  <data name="ApiLanguage" xml:space="preserve">
+    <value>Idioma de las respuestas: en (inglés) o es (español).</value>
+  </data>
+  <data name="ApiActionGetAll" xml:space="preserve">
+    <value>Listar {0}</value>
+  </data>
+  <data name="ApiActionGetById" xml:space="preserve">
+    <value>Consultar {0} por identificador</value>
+  </data>
+  <data name="ApiActionGet" xml:space="preserve">
+    <value>Consultar {0}</value>
+  </data>
+  <data name="ApiActionCreate" xml:space="preserve">
+    <value>Crear {0}</value>
+  </data>
+  <data name="ApiActionUpdate" xml:space="preserve">
+    <value>Actualizar {0}</value>
+  </data>
+  <data name="ApiActionDelete" xml:space="preserve">
+    <value>Eliminar {0}</value>
+  </data>
+  <data name="ApiActionAssign" xml:space="preserve">
+    <value>Asignar {0}</value>
+  </data>
+  <data name="ApiActionReplace" xml:space="preserve">
+    <value>Reemplazar {0}</value>
+  </data>
+  <data name="ApiActionRemove" xml:space="preserve">
+    <value>Quitar {0}</value>
+  </data>
+  <data name="ApiActionSignIn" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="ApiActionSignUp" xml:space="preserve">
+    <value>Crear una cuenta y una empresa</value>
+  </data>
+  <data name="ApiActionGetProfile" xml:space="preserve">
+    <value>Consultar tu perfil</value>
+  </data>
+  <data name="ApiActionUpdateProfile" xml:space="preserve">
+    <value>Actualizar tu perfil</value>
+  </data>
+  <data name="ApiActionChangePassword" xml:space="preserve">
+    <value>Cambiar tu contraseña</value>
+  </data>
+  <data name="ApiActionChangeStatus" xml:space="preserve">
+    <value>Cambiar la etapa de la oportunidad</value>
+  </data>
+  <data name="ApiActionGetSummary" xml:space="preserve">
+    <value>Consultar métricas de ventas</value>
+  </data>
+  <data name="ApiActionGetSalespeople" xml:space="preserve">
+    <value>Consultar ventas por integrante</value>
+  </data>
+  <data name="ApiActionDefault" xml:space="preserve">
+    <value>Gestionar {0}</value>
+  </data>
+  <data name="ApiResponse200" xml:space="preserve">
+    <value>Solicitud completada correctamente.</value>
+  </data>
+  <data name="ApiResponse201" xml:space="preserve">
+    <value>El registro fue creado.</value>
+  </data>
+  <data name="ApiResponse204" xml:space="preserve">
+    <value>La operación se completó sin cuerpo de respuesta.</value>
+  </data>
+  <data name="ApiResponse400" xml:space="preserve">
+    <value>La solicitud contiene datos inválidos.</value>
+  </data>
+  <data name="ApiResponse401" xml:space="preserve">
+    <value>Se requiere autenticación o las credenciales no son válidas.</value>
+  </data>
+  <data name="ApiResponse403" xml:space="preserve">
+    <value>El usuario no tiene permiso para realizar esta operación.</value>
+  </data>
+  <data name="ApiResponse404" xml:space="preserve">
+    <value>El registro solicitado no existe.</value>
+  </data>
+  <data name="ApiResponse409" xml:space="preserve">
+    <value>La operación entra en conflicto con un registro existente o una regla de negocio.</value>
+  </data>
+  <data name="ApiResponse500" xml:space="preserve">
+    <value>Ocurrió un error inesperado.</value>
+  </data>
+  <data name="ApiResourceUsers" xml:space="preserve">
+    <value>usuarios</value>
+  </data>
+  <data name="ApiResourceRoles" xml:space="preserve">
+    <value>roles</value>
+  </data>
+  <data name="ApiResourcePermissions" xml:space="preserve">
+    <value>permisos</value>
+  </data>
+  <data name="ApiResourceRolePermissions" xml:space="preserve">
+    <value>permisos de roles</value>
+  </data>
+  <data name="ApiResourceContacts" xml:space="preserve">
+    <value>contactos</value>
+  </data>
+  <data name="ApiResourceTags" xml:space="preserve">
+    <value>etiquetas</value>
+  </data>
+  <data name="ApiResourceContactTags" xml:space="preserve">
+    <value>etiquetas de contactos</value>
+  </data>
+  <data name="ApiResourceOpportunities" xml:space="preserve">
+    <value>oportunidades</value>
+  </data>
+  <data name="ApiResourceConversations" xml:space="preserve">
+    <value>conversaciones</value>
+  </data>
+  <data name="ApiResourceMessages" xml:space="preserve">
+    <value>mensajes</value>
+  </data>
+  <data name="ApiResourceNotifications" xml:space="preserve">
+    <value>notificaciones</value>
+  </data>
+  <data name="ApiResourceSales" xml:space="preserve">
+    <value>ventas</value>
+  </data>
+  <data name="ApiResourceActivities" xml:space="preserve">
+    <value>actividades</value>
+  </data>
+  <data name="ApiResourceOrganizations" xml:space="preserve">
+    <value>empresas</value>
+  </data>
+  <data name="ApiResourceAuthentication" xml:space="preserve">
+    <value>autenticación</value>
+  </data>
+  <data name="ApiResourceDashboard" xml:space="preserve">
+    <value>indicadores</value>
+  </data>
+  <data name="InvalidPagination" xml:space="preserve">
+    <value>La página debe estar entre 1 y 100000 y el tamaño entre 1 y 100.</value>
+  </data>
+  <data name="ApiResourceAttachments" xml:space="preserve"><value>adjuntos de mensajes</value></data>
+</root>
