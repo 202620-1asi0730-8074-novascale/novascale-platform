@@ -13,6 +13,17 @@ public class Conversation : Entity
     public string Status { get; private set; } = string.Empty;
     public long ContactId { get; private set; }
     public long UserId { get; private set; }
+    public string? GmailThreadId { get; private set; }
+    public string? GmailMailbox { get; private set; }
+    public string? GmailSubject { get; private set; }
+    public string? GmailRecipientEmail { get; private set; }
+    public void LinkGmail(string mailbox, string? threadId, string subject, string recipient)
+    {
+        GmailMailbox = mailbox;
+        GmailThreadId = threadId;
+        GmailSubject = subject;
+        GmailRecipientEmail = recipient;
+    }
 
     public string Priority { get; private set; } = "NORMAL";
     public DateTime? PendingSince { get; private set; }
@@ -26,7 +37,7 @@ public class Conversation : Entity
 
     public void Update(UpdateConversationCommand command)
     {
-        Channel = Guard.Choice(command.Channel, "SIMULATED");
+        Channel = Guard.Choice(command.Channel, "SIMULATED", "GMAIL");
         Status = Guard.Choice(command.Status, "OPEN", "CLOSED");
         ContactId = command.ContactId;
         UserId = command.UserId;

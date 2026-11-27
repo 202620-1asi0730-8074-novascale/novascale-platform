@@ -21,6 +21,7 @@ public class ConversationLifecycle(IEntityRelations relations, EntityRules rules
         {
             var original = await relations.Query<Conversation>().AsNoTracking().SingleAsync(item => item.Id == entity.Id, cancellationToken);
             if (original.ContactId != entity.ContactId) throw new BusinessException("InvalidReference");
+            if (original.Channel == "GMAIL" && entity.Channel != "GMAIL") throw new BusinessException("ExternalMessageReadOnly", 409);
             var messages = await relations.Query<Message>().Where(item => item.ConversationId == entity.Id).ToListAsync(cancellationToken);
             foreach (var message in messages) message.AssignUser(entity.UserId);
         }

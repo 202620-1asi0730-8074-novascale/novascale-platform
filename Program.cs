@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.DataProtection;
 using NovaScale.Platform.API.OrganizationManagement.Application.Services;
 using NovaScale.Platform.API.OrganizationManagement.Application.Internal.Services;
 using System.Text;
@@ -51,6 +52,19 @@ using NovaScale.Platform.API.SalesManagement.Application.Internal.QueryServices;
 using NovaScale.Platform.API.SalesManagement.Infrastructure.Persistence.EFC.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSingleton<NovaScale.Platform.API.ConversationManagement.Infrastructure.Gmail.GmailOptions>();
+builder.Services.AddSingleton<NovaScale.Platform.API.ConversationManagement.Infrastructure.Gmail.GmailAuthorizationStore>();
+builder.Services.AddSingleton<NovaScale.Platform.API.ConversationManagement.Infrastructure.Gmail.GmailOperationLocks>();
+var gmailProtection = builder.Services.AddDataProtection().SetApplicationName("NovaLeads");
+if (builder.Configuration["Gmail:DataProtectionKeyPath"] is { Length: > 0 } gmailKeyPath)
+    gmailProtection.PersistKeysToFileSystem(new DirectoryInfo(gmailKeyPath));
+if (OperatingSystem.IsWindows()) gmailProtection.ProtectKeysWithDpapi();
+builder.Services.AddHttpClient<NovaScale.Platform.API.ConversationManagement.Infrastructure.Gmail.GmailClient>(client =>
+{
+    client.Timeout = TimeSpan.FromSeconds(45);
+    client.MaxResponseContentBufferSize = 40 * 1024 * 1024;
+});
+builder.Services.AddScoped<IGmailIntegrationService, NovaScale.Platform.API.ConversationManagement.Infrastructure.Gmail.GmailIntegrationService>();
 builder.WebHost.ConfigureKestrel(options => options.Limits.MaxRequestBodySize = 9 * 1024 * 1024);
 
 builder.Services.AddHttpContextAccessor();
@@ -163,7 +177,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 });
 builder.Services.AddAuthorization();
 builder.Services.AddCors(options => options.AddPolicy("WebApp", policy =>
-    policy.WithOrigins(builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? []).AllowAnyHeader().AllowAnyMethod().WithExposedHeaders("Content-Language")));
+    policy.WithOrigins(builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? []).AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithExposedHeaders("Content-Language")));
 builder.Services.AddRateLimiter(options =>
 {
     options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
