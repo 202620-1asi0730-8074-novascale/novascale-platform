@@ -17,10 +17,10 @@ public static class Guard
         return result;
     }
 
-    public static string Choice(string value, params string[] allowed)
+    public static string Choice(string? value, params string[] allowed)
     {
-        var result = value.Trim().ToUpperInvariant();
-        if (!allowed.Contains(result)) throw new BusinessException("InvalidState");
+        var result = value?.Trim().ToUpperInvariant();
+        if (result is null || !allowed.Contains(result)) throw new BusinessException("InvalidState");
         return result;
     }
 
@@ -34,11 +34,11 @@ public static class Guard
 
     public static string Phone(string? value)
     {
-        if (value is not null && value.Any(character => !char.IsDigit(character) && !"+ ()-.".Contains(character)))
-            throw new BusinessException("InvalidData");
+        if (value is not null && (value.Length > 30 || value.Any(character => !char.IsAsciiDigit(character) && !"+ ()-.".Contains(character))))
+            throw new BusinessException("InvalidPhone");
         var result = new string((value ?? string.Empty).Where(character => char.IsDigit(character) || character == '+').ToArray());
-        if (result.Length > 0 && !System.Text.RegularExpressions.Regex.IsMatch(result, @"^\+?[0-9]{7,15}$"))
-            throw new BusinessException("InvalidData");
+        if (!string.IsNullOrWhiteSpace(value) && !System.Text.RegularExpressions.Regex.IsMatch(result, @"^\+?[0-9]{7,15}$"))
+            throw new BusinessException("InvalidPhone");
         return result;
     }
 

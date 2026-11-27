@@ -18,6 +18,8 @@ public class MessageLifecycle(IEntityRelations relations, EntityRules rules, ICo
             ?? throw new BusinessException("InvalidReference");
         await rules.RequireAssigneeAsync(conversation.UserId, cancellationToken);
         if (conversation.Status != "OPEN") throw new BusinessException("ConversationClosed", 409);
+        if (creating && conversation.Channel == "GMAIL" && entity.ExternalMessageId is null)
+            throw new BusinessException("GmailSendRequired", 409);
         entity.AssignUser(conversation.UserId);
         if (!creating)
         {
@@ -47,7 +49,8 @@ public class MessageLifecycle(IEntityRelations relations, EntityRules rules, ICo
 
     private async Task RefreshAsync(long conversationId, long? excludedId, CancellationToken cancellationToken)
     {
-        var messages = relations.Query<Message>().Where(item => item.ConversationId == conversationId && item.Id != excludedId);
+        var messages = relations.Query<Message>().Where(item => item.ConversationId == conversationId && item.Id != excludedId
+            && (item.DeliveryStatus == "LOCAL" || item.DeliveryStatus == "SENT" || item.DeliveryStatus == "RECEIVED"));
         var last = await messages.OrderByDescending(item => item.SentAt).ThenByDescending(item => item.Id).FirstOrDefaultAsync(cancellationToken);
         DateTime? pending = null;
         if (last?.SenderType == "IN")

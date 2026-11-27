@@ -26,11 +26,12 @@ public static class LocalizedValidationResponseFactory
 
     private static string Translate(ModelError error, string field, IStringLocalizer<SharedResource> localizer)
     {
-        string[] keys = ["RequiredField", "PositiveId", "InvalidEmail", "InvalidData", "InvalidPassword", "InvalidValue", "BodyRequired"];
+        string[] keys = ["RequiredField", "PositiveId", "InvalidEmail", "InvalidPhone", "InvalidAmount", "InvalidData", "InvalidPassword", "InvalidValue", "BodyRequired"];
         foreach (var key in keys)
             if (error.ErrorMessage == localizer[key].Value || error.ErrorMessage == key) return localizer[key];
         var lengthPattern = "^" + Regex.Escape(localizer["LengthLimit"].Value).Replace("\\{1}", "[0-9]+") + "$";
         if (Regex.IsMatch(error.ErrorMessage, lengthPattern)) return error.ErrorMessage;
+        if (field.EndsWith("phone", StringComparison.OrdinalIgnoreCase)) return localizer["InvalidPhone"];
         if (field.EndsWith("amount", StringComparison.OrdinalIgnoreCase) || field.EndsWith("quota", StringComparison.OrdinalIgnoreCase))
             return localizer["InvalidAmount"];
         if (field.EndsWith("date", StringComparison.OrdinalIgnoreCase) || field is "from" or "to") return localizer["InvalidDate"];

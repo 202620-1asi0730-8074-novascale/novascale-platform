@@ -8,6 +8,9 @@
   <data name="InvalidData" xml:space="preserve">
     <value>La información proporcionada no es válida.</value>
   </data>
+  <data name="InvalidPhone" xml:space="preserve">
+    <value>Ingresa un teléfono de 7 a 15 dígitos, opcionalmente con + al inicio.</value>
+  </data>
   <data name="InvalidState" xml:space="preserve">
     <value>El estado seleccionado no es válido.</value>
   </data>
@@ -234,4 +237,49 @@
     <value>La página debe estar entre 1 y 100000 y el tamaño entre 1 y 100.</value>
   </data>
   <data name="ApiResourceAttachments" xml:space="preserve"><value>adjuntos de mensajes</value></data>
+  <data name="GmailNotConfigured" xml:space="preserve">
+    <value>Gmail no está configurado en el servidor.</value>
+  </data>
+  <data name="GmailReconnect" xml:space="preserve">
+    <value>Vuelve a conectar Gmail para renovar la autorización.</value>
+  </data>
+  <data name="GmailPermissionDenied" xml:space="preserve">
+    <value>Habilita Gmail API y concede los permisos para leer y enviar correos.</value>
+  </data>
+  <data name="GmailRateLimited" xml:space="preserve">
+    <value>Gmail está limitando las solicitudes. Inténtalo más tarde.</value>
+  </data>
+  <data name="GmailMessageUnavailable" xml:space="preserve">
+    <value>El hilo de correo ya no está disponible en Gmail.</value>
+  </data>
+  <data name="GmailRequestRejected" xml:space="preserve">
+    <value>Gmail rechazó el correo. Revisa el destinatario y vuelve a conectar si es necesario.</value>
+  </data>
+  <data name="GmailUnavailable" xml:space="preserve">
+    <value>Gmail no está disponible temporalmente. Sincroniza antes de volver a enviar.</value>
+  </data>
+  <data name="GmailAuthorizationFailed" xml:space="preserve">
+    <value>La autorización de Gmail venció o se canceló. Conecta de nuevo.</value>
+  </data>
+  <data name="GmailNotConnected" xml:space="preserve">
+    <value>El propietario del espacio debe conectar Gmail antes de enviar correos.</value>
+  </data>
+  <data name="GmailContactEmailRequired" xml:space="preserve">
+    <value>Agrega un correo electrónico al contacto antes de enviar.</value>
+  </data>
+  <data name="GmailSameRecipient" xml:space="preserve">
+    <value>Usa un destinatario diferente de la cuenta de Gmail conectada.</value>
+  </data>
+  <data name="GmailDeliveryUncertain" xml:space="preserve">
+    <value>No se confirmó la entrega. Sincroniza o revisa Enviados en Gmail antes de crear otro mensaje.</value>
+  </data>
+  <data name="GmailSendRequired" xml:space="preserve">
+    <value>Usa la acción de envío por Gmail para esta conversación.</value>
+  </data>
+  <data name="GmailMessageTooLarge" xml:space="preserve">
+    <value>Este correo es demasiado grande para sincronizarlo.</value>
+  </data>
+  <data name="GmailApiDisabled" xml:space="preserve">
+    <value>Gmail API esta deshabilitada en el proyecto de Google Cloud. Habilitala y vuelve a conectar Gmail.</value>
+  </data>
 </root>

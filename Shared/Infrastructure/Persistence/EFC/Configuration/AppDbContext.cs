@@ -22,6 +22,31 @@ public class AppDbContext(DbContextOptions<AppDbContext> options, IRequestContex
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+        builder.Entity<GmailAccount>().HasBaseType((Type?)null);
+        builder.Entity<GmailAccount>().ToTable("gmail_accounts");
+        builder.Entity<GmailAccount>().HasKey(entity => entity.Id);
+        builder.Entity<GmailAccount>().Property(entity => entity.Id).HasColumnName("id_gmail_account").ValueGeneratedOnAdd();
+        builder.Entity<GmailAccount>().Property(entity => entity.OrganizationId).HasColumnName("id_organization");
+        builder.Entity<GmailAccount>().HasIndex(entity => entity.OrganizationId).IsUnique();
+        builder.Entity<GmailAccount>().HasQueryFilter(entity => entity.OrganizationId == OrganizationId);
+        builder.Entity<GmailAccount>().HasOne<Organization>().WithMany().HasForeignKey(entity => entity.OrganizationId).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<GmailAccount>().Property(entity => entity.ConnectedByUserId).HasColumnName("connected_by_user_id");
+        builder.Entity<GmailAccount>().HasOne<User>().WithMany().HasForeignKey(entity => new { entity.OrganizationId, entity.ConnectedByUserId })
+            .HasPrincipalKey(entity => new { entity.OrganizationId, entity.Id }).OnDelete(DeleteBehavior.Restrict);
+        builder.Entity<GmailAccount>().Property(entity => entity.Email).HasColumnName("email").HasMaxLength(120);
+        builder.Entity<GmailAccount>().Property(entity => entity.ProtectedRefreshToken).HasColumnName("protected_refresh_token").HasColumnType("text");
+        builder.Entity<GmailAccount>().Property(entity => entity.ProtectedAccessToken).HasColumnName("protected_access_token").HasColumnType("text");
+        builder.Entity<GmailAccount>().Property(entity => entity.AccessTokenExpiresAt).HasColumnName("access_token_expires_at");
+        builder.Entity<GmailAccount>().Property(entity => entity.CreatedAt).HasColumnName("created_at");
+        builder.Entity<GmailAccount>().Property(entity => entity.UpdatedAt).HasColumnName("updated_at");
+        builder.Entity<Conversation>().Property(entity => entity.GmailMailbox).HasColumnName("gmail_mailbox").HasMaxLength(120);
+        builder.Entity<Conversation>().Property(entity => entity.GmailThreadId).HasColumnName("gmail_thread_id").HasMaxLength(100);
+        builder.Entity<Conversation>().Property(entity => entity.GmailSubject).HasColumnName("gmail_subject").HasMaxLength(255);
+        builder.Entity<Conversation>().Property(entity => entity.GmailRecipientEmail).HasColumnName("gmail_recipient_email").HasMaxLength(120);
+        builder.Entity<Message>().Property(entity => entity.DeliveryStatus).HasColumnName("delivery_status").HasMaxLength(20).HasDefaultValue("LOCAL");
+        builder.Entity<Message>().Property(entity => entity.EmailMessageId).HasColumnName("email_message_id").HasMaxLength(255);
+        builder.Entity<Message>().Property(entity => entity.ClientRequestId).HasColumnName("client_request_id");
+        builder.Entity<Message>().HasIndex(entity => new { entity.OrganizationId, entity.ClientRequestId }).IsUnique();
         builder.Entity<Conversation>().HasBaseType((Type?)null);
         builder.Entity<Conversation>().ToTable("conversations");
         builder.Entity<Conversation>().HasKey(entity => entity.Id);
